@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Sign In</title>
+		<style type="text/css">
+			.title {
+				height: 120px;
+				line-height: 120px;
+				color: #111111;
+				font-size: 36px;
+			}
+			
+			.text {
+				width: 260px;
+			}
+			
+			.button {
+				width: 100%;
+				height: 30px;
+			}
+		</style>
+		<link href="css/loading_circle.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/captcha.js"></script>
+
+	</head>
+
+	<body background="img/bg.jpg" onload="changeImg()">
+		<script type="text/javascript">
+			var result;
+			var vcode; //生成的验证码
+			var imgDataURL;
+
+			function checkName(v) {
+				var flag = v.match(/^[0-9A-Za-z_]{4,16}&/);
+				if(flag) {
+					document.getElementById("unameFlag").style.color = "#0000DD";
+					document.getElementById("unameFlag").innerHTML = "√";
+				} else {
+					document.getElementById("unameFlag").style.color = "#DD0000";
+					document.getElementById("unameFlag").innerHTML = "×";
+				}
+			}
+
+			function checkPwd(v) {
+				var flag = v.match(/^[0-9A-Za-z_]{4,32}&/);
+				if(flag) {
+					document.getElementById("upwdFlag").style.color = "#0000DD";
+					document.getElementById("unameFlag").innerHTML = "√";
+				} else {
+					document.getElementById("upwdFlag").style.color = "#DD0000";
+					document.getElementById("upwdFlag").innerHTML = "×";
+				}
+			}
+
+			function checkCaptcha(v) {
+				var flag = (v === vcode);
+				if(flag) {
+					document.getElementById("captchaFlag").style.color = "#0000DD";
+					document.getElementById("captchaFlag").innerHTML = "√";
+				} else {
+					document.getElementById("captchaFlag").style.color = "#DD0000";
+					document.getElementById("captchaFlag").innerHTML = "×";
+				}
+			}
+
+			function changeImg() {
+				result = createCaptcha();
+				vcode = result.code; //生成的验证码
+				imgDataURL = result.dataURL; //生成的 base64 图片
+				document.getElementById("captchaImg").src = imgDataURL;
+			}
+
+			function check(form) {
+				if(document.forms.loginForm.uname.value == "") { //用户名是否为空
+					alert("请输入用户名！")
+					document.forms.loginForm.uname.focus(); //获取焦点
+					return false;
+				} else if(document.forms.loginForm.upwd.value.length == 0) { //密码的长度是否为0
+					alert("请输入密码！");
+					document.forms.loginForm.upwd.focus();
+					return false;
+				}
+			}
+
+			function goRegister() {
+				var width = 400;
+				var height = 600;
+				var left = (screen.availWidth - width) / 2;
+				var top = (screen.availHeight - height) / 2;
+				var myWindow = window.open("register.html", "ppp", "width=500,height=600,top=" + top + ",left=" + left);
+			}
+		</script>
+		<div class="preloader">
+			<div class="sk-spinner sk-spinner-wordpress">
+				<span class="sk-inner-circle"></span>
+			</div>
+		</div>
+
+		<div align="center" class="title">CrazyCompany</div>
+		<div class="info" align="center">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%" height="180">
+				<tr>
+					<td width="50%"></td>
+					<td width="30%">
+						<form action="index.html" method="post">
+							<table border="1" cellpadding="10" cellspacing="0" width="100%" height="100%">
+								<tr height="25%">
+									<td>UserName:</td>
+									<td colspan="2"><input type="text" id="uname" placeholder="Mobile/E-Mail/UserName" onblur="checkName(this.value)" class="text" /></td>
+								</tr>
+								<tr height="25%">
+									<td>PassWord:</td>
+									<td colspan="2"><input type="password" id="upwd" placeholder="Input your password" onblur="checkPwd(this.value)" class="text" /></td>
+								</tr>
+								<tr height="25%">
+									<td>SecurityCode:</td>
+									<td><input id="captcha" type="text" value="" onblur="checkCaptcha(this.value)" /></td>
+									<td><img id="captchaImg" alt="验证码" src="" onclick="changeImg()" width="90" height="30"></td>
+								</tr>
+								<tr height="25%">
+									<td colspan="3" align="center">
+										<table border="0" cellspacing="0" cellpadding="4" width="100%" height="100%">
+											<tr>
+												<td width="33%" align="center">
+													<input type="submit" id="login" onclick="return check(this)" value="Sign in" class="button" />
+												</td>
+												<td align="center">
+													<input type="reset" value="Reset" class="button" />
+												</td>
+												<td width="33%" align="center">
+													<input type="button" value="Sign up" onclick="goRegister()" class="button" />
+												</td>
+											</tr>
+										</table>
+
+									</td>
+								</tr>
+							</table>
+						</form>
+					</td>
+					<td>
+						<table border="0" cellpadding="10" cellspacing="0" width="100%" height="100%" align="left">
+							<tr height="25%">
+								<td><b id="unameFlag"></b></td>
+							</tr>
+							<tr height="25%">
+								<td><b id="upwdFlag"></b></td>
+							</tr>
+							<tr height="25%">
+								<td><b id="captchaFlag"></b></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/custom.js"></script>
+	</body>
+
+</html>

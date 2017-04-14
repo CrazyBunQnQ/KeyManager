@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			#d1 {
+				width: 120px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			ul {
+				font-weight: bold;
+				/*list-style-type:*/
+				/*列表样式类型：circle （小圆圈）;*/
+				/*square(正方形 小方块)*/
+				/*none(无列表项符号)*/
+				list-style-type: none;
+				/*文本位置*/
+				text-align: center;
+				/*行高*/
+				line-height: 60px;
+				/*行宽*/
+				width: 120px;
+				/*水平显示（默认竖直排列）*/
+				/*float: left;*/
+				padding: 0px;
+				margin: 0px;
+			}
+			/*光标移上去的事件*/
+			
+			li:hover {
+				background-color: #E6E6E6;
+			}
+			/*链接初始化状态*/
+			
+			a:link {
+				color: dodgerblue;
+				text-decoration: none;
+			}
+			/*鼠标悬停状态*/
+			
+			a:hover {
+				color: red;
+				text-decoration: none;
+			}
+			/*鼠标点击一瞬间的状态*/
+			
+			a:active {
+				color: red;
+				text-decoration: none;
+			}
+			/*鼠标点击后的状态*/
+			
+			a:visited {
+				color: dodgerblue;
+				text-decoration: none;
+			}
+		</style>
+
+	</head>
+
+	<body bgcolor="#272822">
+		<div id="d1">
+			<!--
+     ul标签  无序列表标签
+     li:列表标签 （内容可以是 段落，图片，文本...）
+     -->
+			<ul>
+				<li>
+					<a href="#" class="category">用户查询</a>
+				</li>
+				<li>
+					<a href="#" class="category">用户管理</a>
+				</li>
+				<li>
+					<a href="#" class="category">激活码查询</a>
+				</li>
+				<li>
+					<a href="#" class="category">激活码管理</a>
+				</li>
+				<li>
+					<a href="#" class="category">联系作者</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
