@@ -16,12 +16,15 @@ function createCaptcha() {
 	ctx.fillStyle = '#f3fbfe';
 	ctx.fillRect(0, 0, selfWidth, selfHeight);
 	ctx.globalAlpha = .8;
-	ctx.font = '16px sans-serif';
+//	ctx.font = '16px sans-serif';
 
-	for(var _i = 0; _i < 10; _i++) {
-		ctx.fillStyle = 'rgb(' + randInt(150, 225) + ',' + randInt(150, 225) + ',' + randInt(150, 225) + ')';
-	}
+//	for(var _i = 0; _i < 10; _i++) {
+//		ctx.fillStyle = 'rgb(' + randInt(150, 225) + ',' + randInt(150, 225) + ',' + randInt(150, 225) + ')';
+//	}
 
+	/**
+	 * 四个随机数字或字母
+	 */
 	ctx.font = 'bold 32px sans-serif';
 	for(var i = 0; i < 4; i++) {
 		var temp_index = randInt(0, temp.length);

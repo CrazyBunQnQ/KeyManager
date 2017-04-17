@@ -12,18 +12,15 @@
 				font-size: 36px;
 			}
 			
-			.text {
-				width: 260px;
-			}
-			
 			.button {
 				width: 100%;
 				height: 30px;
 			}
 		</style>
 		<link href="css/loading_circle.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/style.css" />
+		
 		<script type="text/javascript" src="js/captcha.js"></script>
-
 	</head>
 
 	<body background="img/bg.jpg" onload="changeImg()">
@@ -55,7 +52,7 @@
 			}
 
 			function checkCaptcha(v) {
-				var flag = (v === vcode);
+				var flag = (v.toLowerCase() === vcode);
 				if(flag) {
 					document.getElementById("captchaFlag").style.color = "#0000DD";
 					document.getElementById("captchaFlag").innerHTML = "√";
@@ -100,24 +97,24 @@
 
 		<div align="center" class="title">CrazyCompany</div>
 		<div class="info" align="center">
-			<table border="0" cellspacing="0" cellpadding="0" width="100%" height="180">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%" height="220">
 				<tr>
 					<td width="50%"></td>
 					<td width="30%">
-						<form action="index.html" method="post">
-							<table border="1" cellpadding="10" cellspacing="0" width="100%" height="100%">
+						<form action="index.html" method="post" style="height: 100%;">
+							<table border="1" bordercolor="#666666" cellpadding="9" cellspacing="0" width="100%" height="100%">
 								<tr height="25%">
 									<td>UserName:</td>
-									<td colspan="2"><input type="text" id="uname" placeholder="Mobile/E-Mail/UserName" onblur="checkName(this.value)" class="text" /></td>
+									<td colspan="2" align="center"><input type="text" id="uname" placeholder="Mobile/E-Mail/UserName" onblur="checkName(this.value)" class="text" /></td>
 								</tr>
 								<tr height="25%">
 									<td>PassWord:</td>
-									<td colspan="2"><input type="password" id="upwd" placeholder="Input your password" onblur="checkPwd(this.value)" class="text" /></td>
+									<td colspan="2" align="center"><input type="password" id="upwd" placeholder="Input your password" onblur="checkPwd(this.value)" class="text" /></td>
 								</tr>
 								<tr height="25%">
 									<td>SecurityCode:</td>
-									<td><input id="captcha" type="text" value="" onblur="checkCaptcha(this.value)" /></td>
-									<td><img id="captchaImg" alt="验证码" src="" onclick="changeImg()" width="90" height="30"></td>
+									<td align="center"><input id="captcha" type="text" value="" onblur="checkCaptcha(this.value)" class="text" /></td>
+									<td align="center"><img id="captchaImg" alt="验证码" src="" onclick="changeImg()" width="90" height="30"></td>
 								</tr>
 								<tr height="25%">
 									<td colspan="3" align="center">
