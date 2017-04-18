@@ -1,15 +1,18 @@
 package com.crazybunqnq.bean;
 
+import java.io.Serializable;
+
 /**
  * 用户信息类
  * 
  * @author CrazyBunQnQ
  *
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
+	private static final long serialVersionUID = -5413034404883669633L;
 	private String name;
 	private String pwd;
-	private String realName;
+	private String nickName;
 	private String sex;
 	private int age;
 	private String phoneNumber;
@@ -27,8 +30,8 @@ public class UserInfo {
 	 *            用户名
 	 * @param pwd
 	 *            密码
-	 * @param realName
-	 *            真实姓名
+	 * @param nickName
+	 *            昵称
 	 * @param sex
 	 *            性别
 	 * @param age
@@ -40,12 +43,12 @@ public class UserInfo {
 	 * @param QQ
 	 *            QQ
 	 */
-	public UserInfo(String name, String pwd, String realName, String sex, int age, String phoneNumber, String WeChat,
+	public UserInfo(String name, String pwd, String nickName, String sex, int age, String phoneNumber, String WeChat,
 			String QQ) {
 		super();
 		this.name = name;
 		this.pwd = pwd;
-		this.realName = realName;
+		this.nickName = nickName;
 		this.sex = sex;
 		this.age = age;
 		this.phoneNumber = phoneNumber;
@@ -69,12 +72,12 @@ public class UserInfo {
 		this.pwd = pwd;
 	}
 
-	public String getRealName() {
-		return realName;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getSex() {
@@ -119,7 +122,7 @@ public class UserInfo {
 
 	@Override
 	public String toString() {
-		return "UserInfo [name=" + name + ", pwd=" + pwd + ", realName=" + realName + ", sex=" + sex + ", age=" + age
+		return "UserInfo [name=" + name + ", pwd=" + pwd + ", realName=" + nickName + ", sex=" + sex + ", age=" + age
 				+ ", phoneNumber=" + phoneNumber + ", WeChat=" + WeChat + ", QQ=" + QQ + "]";
 	}
 }
