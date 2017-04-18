@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.crazybun.dao.UserDao;
-import com.crazybun.entity.User;
+import com.crazybunqnq.dao.UserDao;
+import com.crazybunqnq.entity.User;
 
 public class UserDaoImpl implements UserDao {
 

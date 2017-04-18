@@ -2,12 +2,10 @@ package com.crazybunqnq.test;
 
 import java.sql.Connection;
 
-import com.crazybun.dao.CDKeyDao;
-import com.crazybun.dao.impl.CDKeyDaoImpl;
-import com.crazybun.entity.CDKey;
-import com.crazybun.jdbc.JDBCTest;
-import com.crazybun.util.ConnectionFactory;
-import com.sun.org.apache.xerces.internal.impl.xs.opti.DefaultElement;
+import com.crazybunqnq.dao.CDKeyDao;
+import com.crazybunqnq.dao.impl.CDKeyDaoImpl;
+import com.crazybunqnq.entity.CDKey;
+import com.crazybunqnq.utils.ConnectionFactory;
 
 public class AddressDaoTest {
 

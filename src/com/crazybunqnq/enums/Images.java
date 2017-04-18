@@ -3,7 +3,7 @@ package com.crazybunqnq.enums;
 import java.awt.Color;
 import java.awt.Font;
 
-import com.crazybun.entity.ImgStringSetting;
+import com.crazybunqnq.entity.ImgStringSetting;
 
 public enum Images {
 	Test("测试", 3, new ImgStringSetting(new Font("宋体", Font.PLAIN, 36), 200, 200), new ImgStringSetting(new Font("微软雅黑", Font.PLAIN, 36), 200, 300, Color.YELLOW), new ImgStringSetting(new Font("黑体", Font.BOLD, 36), 200, 400, Color.GREEN)),

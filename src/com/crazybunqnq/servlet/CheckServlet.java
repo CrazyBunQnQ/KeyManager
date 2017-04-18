@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.crazybun.entity.User;
-import com.crazybun.service.CheckUserService;
-import com.crazybun.util.CDKeyBuilder;
+import com.crazybunqnq.entity.User;
+import com.crazybunqnq.service.CheckUserService;
+import com.crazybunqnq.utils.CDKeyBuilder;
 
 public class CheckServlet extends HttpServlet {
 	private static final long serialVersionUID = -5524847119463925284L;

@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.crazybun.dao.CDKeyDao;
-import com.crazybun.entity.CDKey;
+import com.crazybunqnq.dao.CDKeyDao;
+import com.crazybunqnq.entity.CDKey;
 
 public class CDKeyDaoImpl implements CDKeyDao {
 

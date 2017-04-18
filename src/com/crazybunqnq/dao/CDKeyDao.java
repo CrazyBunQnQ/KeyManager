@@ -3,7 +3,7 @@ package com.crazybunqnq.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.crazybun.entity.CDKey;
+import com.crazybunqnq.entity.CDKey;
 
 public interface CDKeyDao {
 

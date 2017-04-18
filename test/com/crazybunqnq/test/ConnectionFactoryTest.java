@@ -2,7 +2,7 @@ package com.crazybunqnq.test;
 
 import java.sql.Connection;
 
-import com.crazybun.util.ConnectionFactory;
+import com.crazybunqnq.utils.ConnectionFactory;
 
 public class ConnectionFactoryTest {
 

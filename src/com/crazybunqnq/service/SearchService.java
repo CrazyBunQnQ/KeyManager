@@ -3,9 +3,9 @@ package com.crazybunqnq.service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import com.crazybun.dao.UserDao;
-import com.crazybun.dao.impl.UserDaoImpl;
-import com.crazybun.util.ConnectionFactory;
+import com.crazybunqnq.dao.UserDao;
+import com.crazybunqnq.dao.impl.UserDaoImpl;
+import com.crazybunqnq.utils.ConnectionFactory;
 import com.google.gson.JsonObject;
 
 public class SearchService {

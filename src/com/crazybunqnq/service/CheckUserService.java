@@ -3,10 +3,10 @@ package com.crazybunqnq.service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import com.crazybun.dao.UserDao;
-import com.crazybun.dao.impl.UserDaoImpl;
-import com.crazybun.entity.User;
-import com.crazybun.util.ConnectionFactory;
+import com.crazybunqnq.dao.UserDao;
+import com.crazybunqnq.dao.impl.UserDaoImpl;
+import com.crazybunqnq.entity.User;
+import com.crazybunqnq.utils.ConnectionFactory;
 
 public class CheckUserService {
 

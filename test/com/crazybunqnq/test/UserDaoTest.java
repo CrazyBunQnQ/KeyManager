@@ -2,11 +2,10 @@ package com.crazybunqnq.test;
 
 import java.sql.Connection;
 
-import com.crazybun.dao.UserDao;
-import com.crazybun.dao.impl.UserDaoImpl;
-import com.crazybun.entity.User;
-import com.crazybun.jdbc.JDBCTest;
-import com.crazybun.util.ConnectionFactory;
+import com.crazybunqnq.dao.UserDao;
+import com.crazybunqnq.dao.impl.UserDaoImpl;
+import com.crazybunqnq.entity.User;
+import com.crazybunqnq.utils.ConnectionFactory;
 
 public class UserDaoTest {
 

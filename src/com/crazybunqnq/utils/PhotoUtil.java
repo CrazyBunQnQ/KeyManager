@@ -20,8 +20,8 @@ import java.text.ParseException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import com.crazybun.entity.ImgStringSetting;
-import com.crazybun.enums.Images;
+import com.crazybunqnq.entity.ImgStringSetting;
+import com.crazybunqnq.enums.Images;
 import com.sun.image.codec.jpeg.ImageFormatException;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageDecoder;
