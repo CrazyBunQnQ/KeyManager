@@ -29,7 +29,7 @@ public class DBUtil {
 		 */
 		Properties pr = new Properties();
 		try {
-			pr.load(DBUtil.class.getClassLoader().getResourceAsStream("db.properties"));
+			pr.load(DBUtil.class.getClassLoader().getResourceAsStream("dbconfig.properties"));
 			dbDriver = pr.getProperty("driver");
 			dbURL = pr.getProperty("url");
 			dbUser = pr.getProperty("user");
