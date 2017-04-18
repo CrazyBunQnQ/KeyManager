@@ -1,0 +1,10 @@
+<!ELEMENT users (user*)>
+<!ELEMENT user (uname,upwd,age,sex)>
+<!ELEMENT uname (#PCDATA)>
+<!ELEMENT upwd (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ATTLIST user 
+	id ID #REQUIRED
+	height CDATA #IMPLIED
+>

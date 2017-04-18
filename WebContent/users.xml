@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE users SYSTEM "users.dtd">
+<users>
+	<user id="u1" height="180">
+		<uname>bao</uname>
+		<upwd>123456</upwd>
+		<age>18</age>
+		<sex>M</sex>
+	</user>
+	<user id="u2">
+		<uname>hao</uname>
+		<upwd>123</upwd>
+		<age>16</age>
+		<sex>F</sex>
+	</user>
+</users>
