@@ -1,6 +1,6 @@
 package com.crazybunqnq.dao;
 
-import com.crazybunqnq.bean.UserInfo;
+import com.crazybunqnq.entity.UserInfo;
 
 public interface UserInfoDAO {
 public UserInfo findUserInfoByUserName(String name);

@@ -1,4 +1,4 @@
-package com.crazybunqnq.bean;
+package com.crazybunqnq.entity;
 
 import java.io.Serializable;
 
