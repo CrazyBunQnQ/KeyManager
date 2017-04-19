@@ -9,7 +9,7 @@ import com.crazybunqnq.utils.ConnectionFactory;
 
 public class UserDaoTest {
 
-	private static void insertUser(String name, String password, String email) {
+	private static void insertUser(String name, String password) {
 		Connection conn = null;
 		try {
 			conn = ConnectionFactory.getInstance().makeConnection();
@@ -18,8 +18,7 @@ public class UserDaoTest {
 			UserDao userDao = new UserDaoImpl();
 			User newUser = new User();
 			newUser.setName(name);
-			newUser.setPassword(password);
-			newUser.setEmail(email);
+			newUser.setPwd(password);
 
 			userDao.save(conn, newUser);
 			conn.commit();
@@ -35,7 +34,7 @@ public class UserDaoTest {
 		}
 	}
 
-	private static void updateUser(Long id, String name, String password, String email) {
+	private static void updateUser(Long id, String name, String password) {
 		Connection conn = null;
 		try {
 			conn = ConnectionFactory.getInstance().makeConnection();
@@ -44,8 +43,7 @@ public class UserDaoTest {
 			UserDao userDao = new UserDaoImpl();
 			User newUser = new User();
 			newUser.setName(name);
-			newUser.setPassword(password);
-			newUser.setEmail(email);
+			newUser.setPwd(password);
 
 			userDao.update(conn, id, newUser);
 			conn.commit();

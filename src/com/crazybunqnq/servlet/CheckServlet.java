@@ -53,7 +53,7 @@ public class CheckServlet extends HttpServlet {
 		} else {
 			User user = new User();
 			user.setName(uname);
-			user.setPassword(passwd);
+			user.setPwd(passwd);
 			boolean bool = cku.check(user);
 
 			if (bool) {

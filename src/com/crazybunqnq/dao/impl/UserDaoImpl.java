@@ -15,13 +15,17 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Override
 	public void save(Connection conn, User user) throws SQLException {
-		PreparedStatement ps = conn.prepareCall("INSERT INTO tbl_user(name, password, permission, email, qq) VALUES (?,?,?,?,?)");
+		PreparedStatement ps = conn.prepareCall("INSERT INTO user VALUES (id,?,?,?,?,?,?,?,?,?)");
 
 		ps.setString(1, user.getName());
-		ps.setString(2, user.getPassword());
-		ps.setInt(3, user.getPermission());
-		ps.setString(4, user.getEmail());
-		ps.setString(5, user.getQQ());
+		ps.setString(2, user.getPwd());
+		ps.setString(3, user.getNickName());
+		ps.setString(4, user.getSex());
+		ps.setInt(5, user.getAge());
+		ps.setInt(6, user.getPhoneNumber());
+		ps.setString(7, user.getWeChat());
+		ps.setString(8, user.getQQ());
+		ps.setDate(9, user.getCreateTime());
 		ps.execute();
 	}
 
@@ -30,15 +34,18 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Override
 	public void update(Connection conn, Long id, User user) throws SQLException {
-		String updateSql = "UPDATE tbl_user SET name = ?, password = ?, permission = ?, email = ?, qq = ? WHERE id = ?";
+		String updateSql = "UPDATE tbl_user SET name = ?, pwd = ?, nickname = ?, sex = ?, age = ?, phone = ?, wechat = ?, qq = ?, createtime = ? WHERE id = ?";
 		PreparedStatement ps = conn.prepareCall(updateSql);
 
 		ps.setString(1, user.getName());
-		ps.setString(2, user.getPassword());
-		ps.setInt(3, user.getPermission());
-		ps.setString(4, user.getEmail());
-		ps.setString(5, user.getQQ());
-		ps.setLong(6, id);
+		ps.setString(2, user.getPwd());
+		ps.setString(3, user.getNickName());
+		ps.setString(4, user.getSex());
+		ps.setInt(5, user.getAge());
+		ps.setInt(6, user.getPhoneNumber());
+		ps.setString(7, user.getWeChat());
+		ps.setString(8, user.getQQ());
+		ps.setDate(9, user.getCreateTime());
 		ps.execute();
 	}
 
@@ -59,7 +66,7 @@ public class UserDaoImpl implements UserDao {
 	public ResultSet get(Connection conn, User user) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_user WHERE name = ? AND password = ?");
 		ps.setString(1, user.getName());// 设置第一个参数
-		ps.setString(2, user.getPassword());
+		ps.setString(2, user.getPwd());
 
 		return ps.executeQuery();// 返回查询结果
 	}
