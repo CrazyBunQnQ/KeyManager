@@ -3,7 +3,9 @@ package com.crazybunqnq.utils;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -60,7 +62,13 @@ public class DBUtil {
 	 * @param conn
 	 * @throws SQLException
 	 */
-	public static void closeConnection(Connection conn) throws SQLException {
+	public static void closeConnection(Connection conn, Statement st, ResultSet res) throws SQLException {
+		if (st != null) {
+			st.close();
+		}
+		if (res != null) {
+			res.close();
+		}
 		if (conn != null) {
 			conn.close();
 		}

@@ -16,7 +16,6 @@ public class CheckUserService {
 		Connection conn = null;
 
 		try {
-//			conn = ConnectionFactory.getInstance().makeConnection();
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 

@@ -2,17 +2,20 @@ package com.crazybunqnq.test;
 
 import java.sql.Connection;
 
+import org.junit.Test;
+
 import com.crazybunqnq.dao.CDKeyDao;
 import com.crazybunqnq.dao.impl.CDKeyDaoImpl;
 import com.crazybunqnq.entity.CDKey;
-import com.crazybunqnq.utils.ConnectionFactory;
+import com.crazybunqnq.utils.DBUtil;
 
 public class AddressDaoTest {
 
-	private static void insertAddress(String city, String country, Long userId) {
+	@Test
+	public void insertAddress(String city, String country, Long userId) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			CDKeyDao addressDao = new CDKeyDaoImpl();
@@ -35,10 +38,11 @@ public class AddressDaoTest {
 		}
 	}
 
-	private static void updateAddress(Long id, String city, String country, Long userId) {
+	@Test
+	public void updateAddress(Long id, String city, String country, Long userId) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			CDKeyDao addressDao = new CDKeyDaoImpl();
@@ -61,10 +65,11 @@ public class AddressDaoTest {
 		}
 	}
 
-	private static void deleteAddress(Long id) {
+	@Test
+	public void deleteAddress(Long id) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			CDKeyDao addressDao = new CDKeyDaoImpl();
@@ -83,12 +88,5 @@ public class AddressDaoTest {
 				e2.printStackTrace();
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-//		insertAddress("shandong", "china", 12L);
-//		updateAddress(5L, "zhuhai", "china", 12L);
-//		deleteAddress(4L);
-		JDBCTest.main(null);
 	}
 }

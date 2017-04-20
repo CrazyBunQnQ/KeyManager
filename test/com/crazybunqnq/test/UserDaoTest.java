@@ -2,23 +2,27 @@ package com.crazybunqnq.test;
 
 import java.sql.Connection;
 
+import org.junit.Test;
+
 import com.crazybunqnq.dao.UserDao;
 import com.crazybunqnq.dao.impl.UserDaoImpl;
 import com.crazybunqnq.entity.User;
-import com.crazybunqnq.utils.ConnectionFactory;
+import com.crazybunqnq.utils.DBUtil;
+import com.crazybunqnq.utils.MD5Util;
 
 public class UserDaoTest {
 
-	private static void insertUser(String name, String password) {
+	@Test
+	public void insertUser(String name, String password) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			UserDao userDao = new UserDaoImpl();
 			User newUser = new User();
 			newUser.setName(name);
-			newUser.setPwd(password);
+			newUser.setPwd(MD5Util.getMD5(password));
 
 			userDao.save(conn, newUser);
 			conn.commit();
@@ -34,10 +38,11 @@ public class UserDaoTest {
 		}
 	}
 
-	private static void updateUser(Long id, String name, String password) {
+	@Test
+	public void updateUser(Long id, String name, String password) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			UserDao userDao = new UserDaoImpl();
@@ -59,10 +64,11 @@ public class UserDaoTest {
 		}
 	}
 
-	private static void deleteUser(Long id) {
+	@Test
+	public void deleteUser(Long id) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			UserDao userDao = new UserDaoImpl();
@@ -80,13 +86,5 @@ public class UserDaoTest {
 				e2.printStackTrace();
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-//		insertUser("Songya", "250", "250@gmail.com");
-//		updateUser(11L, "Liujie", "123456", "liujie@gmail.com");
-//		updateUser(11L, "Liujie", "123456", "liujie@gmail.com");
-//		deleteUser(11L);
-		JDBCTest.main(null);
 	}
 }

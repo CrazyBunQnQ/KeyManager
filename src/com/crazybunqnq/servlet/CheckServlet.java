@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.crazybunqnq.entity.User;
 import com.crazybunqnq.service.CheckUserService;
 import com.crazybunqnq.utils.CDKeyBuilder;
+import com.crazybunqnq.utils.MD5Util;
 
 public class CheckServlet extends HttpServlet {
 	private static final long serialVersionUID = -5524847119463925284L;
@@ -37,7 +38,7 @@ public class CheckServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uname = request.getParameter("uname");
-		String passwd = request.getParameter("upwd");
+		String passwd = MD5Util.getMD5(request.getParameter("upwd"));
 		String returnUri = request.getParameter("return_uri");// 用户访问登录页面之前所访问的页面，用于使用户登录后跳转回原来的页面
 
 		System.out.println("用户名  ==》  " + uname);

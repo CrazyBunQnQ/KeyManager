@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.junit.Test;
+
 public class JDBCTest {
 
-	public static Connection getConnection() {
+	@Test
+	public Connection getConnection() {
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -21,7 +24,8 @@ public class JDBCTest {
 	/*
 	 * 插入数据 tableName 表名 format 字段格式 values 数据值
 	 */
-	public static void insert(String tableName, String format, String values) {
+	@Test
+	public void insert(String tableName, String format, String values) {
 		Connection conn = getConnection();
 		try {
 			String sql = "INSERT INTO " + tableName + "(" + format + ") VALUES(" + values + ")";
@@ -37,7 +41,8 @@ public class JDBCTest {
 	/*
 	 * 更新数据 tableName 表名 newValue 新值 exp 条件表达式
 	 */
-	public static void update(String tableName, String newValue, String exp) {
+	@Test
+	public void update(String tableName, String newValue, String exp) {
 		Connection conn = getConnection();
 		try {
 			String sql = "UPDATE " + tableName + " SET " + newValue + " " + exp;
@@ -53,7 +58,8 @@ public class JDBCTest {
 	/*
 	 * 删除数据 tableName 表名 exp 条件表达式
 	 */
-	public static void delete(String tableName, String exp) {
+	@Test
+	public void delete(String tableName, String exp) {
 		Connection conn = getConnection();
 		try {
 			String sql = "DELETE FROM " + tableName + " WHERE " + exp;
@@ -69,7 +75,8 @@ public class JDBCTest {
 	/*
 	 * 查询用户表
 	 */
-	public static void queryUsers() {
+	@Test
+	public void queryUsers() {
 		String sql = "SELECT * FROM tbl_user";
 		Connection conn = getConnection();
 		Statement st = null;
@@ -108,7 +115,8 @@ public class JDBCTest {
 	/*
 	 * 查询地址表
 	 */
-	public static void queryAddress() {
+	@Test
+	public void queryAddress() {
 		String sql = "SELECT * FROM tbl_cdkey";
 		Connection conn = getConnection();
 		Statement st = null;
@@ -142,16 +150,5 @@ public class JDBCTest {
 			} catch (Exception e2) {
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		// insert("tbl_user", "name, password, email", "'Linxiao', '123456',
-		// 'linxiao@gmail.com'");
-		// update("tbl_user", "name='Xiaoming'", "name='xiaoming'");
-		// delete("tbl_user", "name='Tom'");
-		System.out.println("用户表：");
-		queryUsers();
-		System.out.println("\n地址表：");
-		queryAddress();
 	}
 }

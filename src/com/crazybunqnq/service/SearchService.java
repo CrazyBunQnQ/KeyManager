@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 
 import com.crazybunqnq.dao.UserDao;
 import com.crazybunqnq.dao.impl.UserDaoImpl;
-import com.crazybunqnq.utils.ConnectionFactory;
+import com.crazybunqnq.utils.DBUtil;
 import com.google.gson.JsonObject;
 
 public class SearchService {
@@ -16,7 +16,7 @@ public class SearchService {
 		Connection conn = null;
 
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 			
 			ResultSet rs = userDao.search(conn, keyWord);

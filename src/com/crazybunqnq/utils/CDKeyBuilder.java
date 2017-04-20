@@ -43,7 +43,7 @@ public class CDKeyBuilder {
 	private static void insertCDKey(String cdkey, int days) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			CDKeyDao cdkeyDao = new CDKeyDaoImpl();
@@ -68,7 +68,7 @@ public class CDKeyBuilder {
 	private static void updateCDKey(Long id, String device, Long userId) {
 		Connection conn = null;
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			CDKeyDao addressDao = new CDKeyDaoImpl();

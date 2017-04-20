@@ -14,7 +14,7 @@ public class DBTest {
 		try {
 			conn = DBUtil.getConnection();
 			System.out.println("连接成功");
-			DBUtil.closeConnection(conn);
+			DBUtil.closeConnection(conn,null,null);
 			System.out.println("关闭连接");
 		} catch (SQLException e) {
 			e.printStackTrace();
