@@ -19,7 +19,7 @@ public class SearchService {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 			
-			ResultSet rs = userDao.search(conn, keyWord);
+			ResultSet rs = userDao.searchUser(conn, keyWord);
 			JsonObject object = new JsonObject();
 			int i = 1;
 			while (rs.next()) {

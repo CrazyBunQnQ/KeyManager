@@ -43,6 +43,7 @@ public class PermissionFilter implements Filter {
 		if (servletPath != null && ("/KeyManager/login.jsp".equals(servletPath) 
 				|| servletPath.equals("/KeyManager/register.html") 
 				|| "/CheckLogin".equals(servletPath) 
+				|| "/Logout".equals(servletPath) 
 				|| "/SearchServlet".equals(servletPath) 
 				|| "/PhotoEditor".equals(servletPath) 
 				|| (servletPath.length()> 15 && "/KeyManager/img".equals(servletPath.substring(0, 15)))

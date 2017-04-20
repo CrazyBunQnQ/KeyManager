@@ -50,7 +50,7 @@
 				document.getElementById("captchaImg").src = imgDataURL;
 			}
 
-			function check(form) {
+			function check() {
 				if(document.getElementById("uname").value === "") { //用户名是否为空
 					alert("请输入用户名！")
 					document.getElementById("uname").focus(); //获取焦点
@@ -110,7 +110,7 @@
 										<table border="0" cellspacing="0" cellpadding="4" width="100%" height="100%">
 											<tr>
 												<td width="33%" align="center">
-													<input type="submit" id="login" onclick="return check(this)" value="Sign in" class="button" />
+													<input type="submit" id="login" onclick="return check()" value="Sign in" class="button" />
 												</td>
 												<td align="center">
 													<input type="reset" value="Reset" class="button" />

@@ -19,7 +19,7 @@ public class CheckUserService {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
-			ResultSet resultSet = userDao.get(conn, user);
+			ResultSet resultSet = userDao.checkUser(conn, user);
 
 			while (resultSet.next()) {
 				return true;

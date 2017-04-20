@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath() + "/MyPages/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 
 }

@@ -12,7 +12,7 @@ public class MD5Util {
 			md = MessageDigest.getInstance("MD5");
 			md.update(str.getBytes());
 			BigInteger lHashInt = new BigInteger(1, md.digest());  
-			System.out.println( String.format("%1$032X", lHashInt));  
+			result =  String.format("%1$032X", lHashInt);  
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}

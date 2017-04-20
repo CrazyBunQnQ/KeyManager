@@ -14,4 +14,6 @@ public interface ManagerDao {
 	public ResultSet search(Connection conn, Manager manager) throws SQLException;
 
 	public ResultSet search(Connection conn, String nameKeyWord) throws SQLException;
+	
+	public ResultSet search(Connection conn, int limit) throws SQLException;
 }

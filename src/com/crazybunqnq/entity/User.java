@@ -24,6 +24,12 @@ public class User implements Serializable {
 	 */
 	private String pwd;
 	/**
+	 * 权限 0-7
+	 * 
+	 * 0：普通用户
+	 */
+	private int limit;
+	/**
 	 * 昵称
 	 */
 	private String nickName;
@@ -52,6 +58,10 @@ public class User implements Serializable {
 	 */
 	private Date createTime;
 
+	public User() {
+
+	}
+	
 	/**
 	 * 构造器
 	 */
@@ -61,6 +71,7 @@ public class User implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.pwd = pwd;
+		limit = 0;
 		this.nickName = nickName;
 		this.sex = sex;
 		this.age = age;
@@ -74,10 +85,6 @@ public class User implements Serializable {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -85,13 +92,21 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getPwd() {
 		return pwd;
 	}
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
 	}
 
 	public String getNickName() {
@@ -147,18 +162,10 @@ public class User implements Serializable {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public User() {
-
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", pwd=" + pwd + ", nickName=" + nickName + ", sex=" + sex
-				+ ", age=" + age + ", phoneNumber=" + phoneNumber + ", WeChat=" + WeChat + ", QQ=" + QQ
+		return "User [id=" + id + ", name=" + name + ", pwd=" + pwd + ", limit=" + limit + ", nickName=" + nickName
+				+ ", sex=" + sex + ", age=" + age + ", phoneNumber=" + phoneNumber + ", WeChat=" + WeChat + ", QQ=" + QQ
 				+ ", createTime=" + createTime + "]";
 	}
 
@@ -171,6 +178,7 @@ public class User implements Serializable {
 		result = prime * result + age;
 		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + limit;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((nickName == null) ? 0 : nickName.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
@@ -206,6 +214,8 @@ public class User implements Serializable {
 		} else if (!createTime.equals(other.createTime))
 			return false;
 		if (id != other.id)
+			return false;
+		if (limit != other.limit)
 			return false;
 		if (name == null) {
 			if (other.name != null)

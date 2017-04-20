@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.crazybunqnq.entity.User;
 import com.crazybunqnq.service.CheckUserService;
-import com.crazybunqnq.utils.CDKeyBuilder;
 import com.crazybunqnq.utils.MD5Util;
 
 public class CheckServlet extends HttpServlet {
@@ -58,12 +57,11 @@ public class CheckServlet extends HttpServlet {
 			boolean bool = cku.check(user);
 
 			if (bool) {
-				CDKeyBuilder.massProduction(30, "31");
 				request.getSession().setAttribute("flag", "login_success");
 				if (returnUri != null) {
 					forward = returnUri;
 				} else {
-					forward = "/KeyManager/index.jsp";
+					forward = "/KeyManager/index.html";
 				}
 			} else {
 				request.getSession().setAttribute("flag", "login_error");

@@ -24,7 +24,7 @@ public class UserDaoTest {
 			newUser.setName(name);
 			newUser.setPwd(MD5Util.getMD5(password));
 
-			userDao.save(conn, newUser);
+			userDao.insertUser(conn, newUser);
 			conn.commit();
 			System.out.println("======用户信息添加成功======");
 		} catch (Exception e) {
@@ -73,8 +73,8 @@ public class UserDaoTest {
 
 			UserDao userDao = new UserDaoImpl();
 			User newUser = new User();
-			newUser.setId(id);
-			userDao.delete(conn, newUser);
+//			newUser.setId(id);
+//			userDao.delete(conn, newUser);
 			conn.commit();
 			System.out.println("======用户删除添加成功======");
 		} catch (Exception e) {

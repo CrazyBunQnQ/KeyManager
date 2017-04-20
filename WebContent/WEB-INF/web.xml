@@ -22,14 +22,14 @@
 		<filter-name>PermissionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!--servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>com.crazybunqnq.servlet.LoginServlet</servlet-class>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.crazybunqnq.servlet.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/Login</url-pattern>
-	</servlet-mapping-->
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>CheckServlet</servlet-name>
 		<servlet-class>com.crazybunqnq.servlet.CheckServlet</servlet-class>
