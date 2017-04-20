@@ -49,7 +49,7 @@ public class CheckServlet extends HttpServlet {
 
 		if (uname == null || uname.equals("") || passwd == null || passwd.equals("")) {
 			request.setAttribute("msg", "用户名或密码为空！");
-			rd = request.getRequestDispatcher("/MyPages/Login.jsp");
+			rd = request.getRequestDispatcher("/KeyManager/login.jsp");
 		} else {
 			User user = new User();
 			user.setName(uname);
@@ -62,12 +62,12 @@ public class CheckServlet extends HttpServlet {
 				if (returnUri != null) {
 					forward = returnUri;
 				} else {
-					forward = "/MyPages/index.jsp";
+					forward = "/KeyManager/index.jsp";
 				}
 			} else {
 				request.getSession().setAttribute("flag", "login_error");
 				request.setAttribute("msg", "用户名或密码输入错误，请重新输入！");
-				forward = "/MyPages/Error.jsp";
+				forward = "/KeyManager/Error.jsp";
 			}
 
 			rd = request.getRequestDispatcher(forward);

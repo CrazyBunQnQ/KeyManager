@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import com.crazybunqnq.dao.UserDao;
 import com.crazybunqnq.dao.impl.UserDaoImpl;
 import com.crazybunqnq.entity.User;
-import com.crazybunqnq.utils.ConnectionFactory;
+import com.crazybunqnq.utils.DBUtil;
 
 public class CheckUserService {
 
@@ -16,7 +16,8 @@ public class CheckUserService {
 		Connection conn = null;
 
 		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
+//			conn = ConnectionFactory.getInstance().makeConnection();
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 
 			ResultSet resultSet = userDao.get(conn, user);

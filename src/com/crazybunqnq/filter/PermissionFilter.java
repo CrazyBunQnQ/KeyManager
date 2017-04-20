@@ -40,7 +40,15 @@ public class PermissionFilter implements Filter {
 		HttpSession session = req.getSession();
 		String flag = (String) session.getAttribute("flag");
 
-		if (servletPath != null && (servletPath.equals("/MyPages/Login.jsp") || servletPath.equals("/MyPages/index.jsp") || servletPath.equals("/CheckServlet") || servletPath.equals("/SearchServlet") || servletPath.equals("/PhotoEditor") || servletPath.substring(0, 12).equals("/MyPages/pic"))) {
+		if (servletPath != null && ("/KeyManager/login.jsp".equals(servletPath) 
+				|| servletPath.equals("/KeyManager/register.html") 
+				|| "/CheckLogin".equals(servletPath) 
+				|| "/SearchServlet".equals(servletPath) 
+				|| "/PhotoEditor".equals(servletPath) 
+				|| (servletPath.length()> 15 && "/KeyManager/img".equals(servletPath.substring(0, 15)))
+				|| (servletPath.length()> 15 && "/KeyManager/css".equals(servletPath.substring(0, 15)))
+				|| (servletPath.length()> 14 && "/KeyManager/js".equals(servletPath.substring(0, 14)))
+				)) {
 			chain.doFilter(request, response);
 		} else {
 			if (flag != null && flag.equals("login_success")) {
@@ -48,12 +56,12 @@ public class PermissionFilter implements Filter {
 			} else if (flag != null && flag.equals("login_error")) {
 				req.setAttribute("msg", "登录失败，请重新登陆！！！<br/>");
 				req.setAttribute("return_uri", servletPath);
-				RequestDispatcher rd = req.getRequestDispatcher("/MyPages/Login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/KeyManager/login.jsp");
 				rd.forward(req, resp);
 			} else {
 				req.setAttribute("msg", "您尚未登录！！！");
 				req.setAttribute("return_uri", servletPath);
-				RequestDispatcher rd = req.getRequestDispatcher("/MyPages/Login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/KeyManager/login.jsp");
 				rd.forward(req, resp);
 			}
 		}

@@ -35,10 +35,13 @@ public class DBUtil {
 			dbUser = pr.getProperty("user");
 			dbPwd = pr.getProperty("pwd");
 			Class.forName(dbDriver);
+			System.out.println("=======配置文件读取成功=======");
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("=======配置文件读取错误：流=======");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println("=======配置文件读取错误：未找到类=======");
 		}
 	}
 	

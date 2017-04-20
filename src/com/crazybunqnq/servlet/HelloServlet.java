@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloServlet extends HttpServlet {
 
+	private static final long serialVersionUID = -1463277882348341505L;
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("====== init with parameters ======");

@@ -1,9 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 	<head>
-		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Sign In</title>
+		<link rel="shortcut icon" href="<%= request.getContextPath() %>/KeyManager/img/ico.ico" type="image/x-icon">
+		<link rel="icon" href="<%= request.getContextPath() %>/KeyManager/img/ico.ico" type="image/x-icon">
 		<style type="text/css">
 			.title {
 				height: 120px;
@@ -17,39 +21,16 @@
 				height: 30px;
 			}
 		</style>
-		<link href="css/loading_circle.css" rel="stylesheet" />
-		<link rel="stylesheet" href="css/style.css" />
-		
-		<script type="text/javascript" src="js/captcha.js"></script>
-	</head>
+		<link href="<%=request.getContextPath()%>/KeyManager/css/loading_circle.css" rel="stylesheet" />
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/KeyManager/css/style.css" />
 
-	<body background="img/bg.jpg" onload="changeImg()">
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/captcha.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/form.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/index.js"></script>
 		<script type="text/javascript">
 			var result;
 			var vcode; //生成的验证码
 			var imgDataURL;
-
-			function checkName(v) {
-				var flag = v.match(/^[0-9A-Za-z_]{4,16}&/);
-				if(flag) {
-					document.getElementById("unameFlag").style.color = "#0000DD";
-					document.getElementById("unameFlag").innerHTML = "√";
-				} else {
-					document.getElementById("unameFlag").style.color = "#DD0000";
-					document.getElementById("unameFlag").innerHTML = "×";
-				}
-			}
-
-			function checkPwd(v) {
-				var flag = v.match(/^[0-9A-Za-z_]{4,32}&/);
-				if(flag) {
-					document.getElementById("upwdFlag").style.color = "#0000DD";
-					document.getElementById("unameFlag").innerHTML = "√";
-				} else {
-					document.getElementById("upwdFlag").style.color = "#DD0000";
-					document.getElementById("upwdFlag").innerHTML = "×";
-				}
-			}
 
 			function checkCaptcha(v) {
 				var flag = (v.toLowerCase() === vcode);
@@ -70,13 +51,18 @@
 			}
 
 			function check(form) {
-				if(document.forms.loginForm.uname.value == "") { //用户名是否为空
+				if(document.getElementById("uname").value === "") { //用户名是否为空
 					alert("请输入用户名！")
-					document.forms.loginForm.uname.focus(); //获取焦点
+					document.getElementById("uname").focus(); //获取焦点
 					return false;
-				} else if(document.forms.loginForm.upwd.value.length == 0) { //密码的长度是否为0
+				} else if(document.getElementById("upwd").value.length === 0) { //密码的长度是否为0
 					alert("请输入密码！");
-					document.forms.loginForm.upwd.focus();
+					document.getElementById("upwd").focus();
+					return false;
+				} else if(document.getElementById("captcha").value != vcode) {
+					alert("验证码错误！");
+					document.getElementById("captcha").focus();
+					changeImg();
 					return false;
 				}
 			}
@@ -86,30 +72,33 @@
 				var height = 600;
 				var left = (screen.availWidth - width) / 2;
 				var top = (screen.availHeight - height) / 2;
-				var myWindow = window.open("register.html", "ppp", "width=500,height=600,top=" + top + ",left=" + left);
+				var myWindow = window.open("<%=request.getContextPath()%>/KeyManager/register.html", "", "width=500,height=600,top=" + top + ",left=" + left);
 			}
 		</script>
+	</head>
+
+	<body background="<%=request.getContextPath()%>/KeyManager/img/bg.jpg" onload="changeImg()">
 		<div class="preloader">
 			<div class="sk-spinner sk-spinner-wordpress">
 				<span class="sk-inner-circle"></span>
 			</div>
 		</div>
 
-		<div align="center" class="title">CrazyCompany</div>
+		<div align="center" class="title">KeyManager</div>
 		<div class="info" align="center">
 			<table border="0" cellspacing="0" cellpadding="0" width="100%" height="220">
 				<tr>
 					<td width="50%"></td>
 					<td width="30%">
-						<form action="index.html" method="post" style="height: 100%;">
+						<form action="<%=request.getContextPath()%>/CheckLogin" method="post" name="loginForm" style="height: 100%;">
 							<table border="1" bordercolor="#666666" cellpadding="9" cellspacing="0" width="100%" height="100%">
 								<tr height="25%">
 									<td>UserName:</td>
-									<td colspan="2" align="center"><input type="text" id="uname" placeholder="Mobile/E-Mail/UserName" onblur="checkName(this.value)" class="text" /></td>
+									<td colspan="2" align="center"><input type="text" id="uname" name="uname" placeholder="UserName Or E-Mail" class="text" /></td>
 								</tr>
 								<tr height="25%">
 									<td>PassWord:</td>
-									<td colspan="2" align="center"><input type="password" id="upwd" placeholder="Input your password" onblur="checkPwd(this.value)" class="text" /></td>
+									<td colspan="2" align="center"><input type="password" id="upwd" name="upwd" placeholder="Password" class="text" /></td>
 								</tr>
 								<tr height="25%">
 									<td>SecurityCode:</td>
@@ -131,7 +120,6 @@
 												</td>
 											</tr>
 										</table>
-
 									</td>
 								</tr>
 							</table>
@@ -158,8 +146,8 @@
 
 		</div>
 
-		<script src="js/jquery.js"></script>
-		<script src="js/custom.js"></script>
+		<script src="<%=request.getContextPath()%>/KeyManager/js/jquery.js"></script>
+		<script src="<%=request.getContextPath()%>/KeyManager/js/custom.js"></script>
 	</body>
 
 </html>
