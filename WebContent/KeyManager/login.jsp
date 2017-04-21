@@ -72,7 +72,7 @@
 				var height = 600;
 				var left = (screen.availWidth - width) / 2;
 				var top = (screen.availHeight - height) / 2;
-				var myWindow = window.open("<%=request.getContextPath()%>/KeyManager/register.html", "", "width=500,height=600,top=" + top + ",left=" + left);
+				var myWindow = window.open("<%=request.getContextPath()%>/KeyManager/register.jsp", "", "width=500,height=600,top=" + top + ",left=" + left);
 			}
 		</script>
 	</head>

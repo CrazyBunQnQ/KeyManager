@@ -77,7 +77,7 @@ function checkNick(v) {
 	if(v === "") {
 		return;
 	}
-	var flag = v.match(/^[.]{6,16}$/);
+	var flag = v.match(/^[\w\W]{6,16}$/);
 	if(flag) {
 		$("nickFlag").style.color = "#0000DD";
 		$("nickFlag").innerHTML = "√";

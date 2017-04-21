@@ -1,9 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 	<head>
-		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			
 		<title>Sign Up</title>
+		
+		<link rel="shortcut icon" href="<%= request.getContextPath() %>/KeyManager/img/ico.ico" type="image/x-icon">
+		<link rel="icon" href="<%= request.getContextPath() %>/KeyManager/img/ico.ico" type="image/x-icon">
+		
 		<link rel="stylesheet" href="css/style.css" />
 
 		<script type="text/javascript" src="js/captcha.js"></script>
@@ -44,12 +51,12 @@
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="uname" onblur="checkName(this.value)" type="text" class="text" placeholder="UserName Or E-Mail" />
+										<input id="uname" name="uname" onblur="checkName(this.value)" type="text" class="text" placeholder="UserName Or E-Mail" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="upwd" onblur="checkPwd(this.value)" type="password" class="text" placeholder="Password" />
+										<input id="upwd" name="upwd" onblur="checkPwd(this.value)" type="password" class="text" placeholder="Password" />
 									</td>
 								</tr>
 								<tr height="44">
@@ -59,32 +66,32 @@
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="nick" onblur="checkNick(this.value)" type="text" class="text" placeholder="Nick Name" />
+										<input id="nick" name="nick" onblur="checkNick(this.value)" type="text" class="text" placeholder="Nick Name" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="sex" onblur="checkSex(this.value)" type="text" class="text" placeholder="sex" />
+										<input id="sex" name="sex" onblur="checkSex(this.value)" type="text" class="text" placeholder="sex" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="age" onblur="checkAge(this.value)" type="text" class="text" placeholder="Age" />
+										<input id="age" name="age" onblur="checkAge(this.value)" type="text" class="text" placeholder="Age" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="phone" onblur="checkPhone(this.value)" type="text" class="text" placeholder="Mobile Phone Number" />
+										<input id="phone" name="phone" onblur="checkPhone(this.value)" type="text" class="text" placeholder="Mobile Phone Number" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="wechat" onblur="checkWeChat(this.value)" type="text" class="text" placeholder="WeChat Number" />
+										<input id="wechat" name="wechat" onblur="checkWeChat(this.value)" type="text" class="text" placeholder="WeChat Number" />
 									</td>
 								</tr>
 								<tr height="44">
 									<td colspan="2">
-										<input id="qq" onblur="checkQQ(this.value)" type="text" class="text" placeholder="QQ Number" />
+										<input id="qq" name="qq" onblur="checkQQ(this.value)" type="text" class="text" placeholder="QQ Number" />
 									</td>
 								</tr>
 								<tr height="44">

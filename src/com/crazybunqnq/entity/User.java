@@ -65,10 +65,9 @@ public class User implements Serializable {
 	/**
 	 * 构造器
 	 */
-	public User(int id, String name, String pwd, String nickName, String sex, int age, String phoneNumber,
+	public User(String name, String pwd, String nickName, String sex, Integer age, String phoneNumber,
 			String weChat, String qQ, Date createTime) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.pwd = pwd;
 		limit = 0;

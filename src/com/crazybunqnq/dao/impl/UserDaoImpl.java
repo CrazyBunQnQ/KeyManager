@@ -10,9 +10,6 @@ import com.crazybunqnq.entity.User;
 
 public class UserDaoImpl implements UserDao {
 
-	/*
-	 * 保存用户信息。
-	 */
 	@Override
 	public void insertUser(Connection conn, User user) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("INSERT INTO user VALUES (id,?,?,0,?,?,?,?,?,?,?)");
@@ -27,15 +24,18 @@ public class UserDaoImpl implements UserDao {
 		ps.setDate(9, user.getCreateTime());
 		ps.execute();
 	}
-
-	/*
-	 * 根据用户指定的ID更新用户信息。
-	 */
+	
 	@Override
-	public void update(Connection conn, Long id, User user) throws SQLException {
+	public boolean delete(Connection conn, Long id) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM tbl_user WHERE id = ?");
+		ps.setLong(1, id);
+		return ps.execute();
+	}
+
+	@Override
+	public boolean update(Connection conn, Long id, User user) throws SQLException {
 		String updateSql = "UPDATE tbl_user SET name = ?, pwd = ?, nickname = ?, sex = ?, age = ?, phone = ?, wechat = ?, qq = ?, createtime = ? WHERE id = ?";
 		PreparedStatement ps = conn.prepareStatement(updateSql);
-
 		ps.setString(1, user.getName());
 		ps.setString(2, user.getPwd());
 		ps.setString(3, user.getNickName());
@@ -45,19 +45,8 @@ public class UserDaoImpl implements UserDao {
 		ps.setString(7, user.getWeChat());
 		ps.setString(8, user.getQQ());
 		ps.setDate(9, user.getCreateTime());
-		ps.execute();
+		return ps.execute();
 	}
-
-	/*
-	 * 删除指定的用户信息。
-	 */
-	@Override
-	public void delete(Connection conn, Long id) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM tbl_user WHERE id = ?");
-		ps.setLong(1, id);
-		ps.execute();
-	}
-
 
 	@Override
 	public ResultSet checkUser(Connection conn, User user) throws SQLException {
@@ -67,35 +56,35 @@ public class UserDaoImpl implements UserDao {
 		return ps.executeQuery();
 	}
 	
-	/**
-	 * 查询所有普通用户
-	 */
+	@Override
+	public ResultSet hasUser(Connection conn, String name) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("SELECT user FROM user WHERE user = ?");
+		ps.setString(1, name);
+		return ps.executeQuery();
+	}
+	
 	@Override
 	public ResultSet searchUser(Connection conn) throws SQLException {
 		return searchManager(conn, 0);
 	}
 	
-	/*
-	 * 按照关键词查询用户
-	 */
 	@Override
-	public ResultSet searchUser(Connection conn, String nameKeyWord) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM user WHERE user LIKE '%" + nameKeyWord + "%' AND limits = 0");
+	public ResultSet searchUser(Connection conn, String name, boolean isNick) throws SQLException {
+		PreparedStatement ps = null;
+		if (isNick) {
+					ps = conn.prepareStatement("SELECT * FROM user WHERE nickname LIKE '%" + name + "%' AND limits = 0");
+		} else {
+			ps = conn.prepareStatement("SELECT * FROM user WHERE user LIKE '%" + name + "%' AND limits = 0");
+		}
 		return ps.executeQuery();
 	}
 
-	/**
-	 * 按照关键词查询管理员
-	 */
 	@Override
-	public ResultSet searchManager(Connection conn, String nameKeyWord) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT id, user, limits FROM user WHERE limits > 0 AND user LIKE '%" + nameKeyWord + "'");
+	public ResultSet searchManager(Connection conn, String name, boolean isNick) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("SELECT id, user, limits FROM user WHERE limits > 0 AND nickname LIKE '%" + name + "'");
 		return ps.executeQuery();
 	}
 
-	/**
-	 * 按照权限查询管理员
-	 */
 	@Override
 	public ResultSet searchManager(Connection conn, int limit) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("SELECT id, user, limits FROM user WHERE limits = " + limit);

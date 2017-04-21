@@ -41,7 +41,8 @@ public class PermissionFilter implements Filter {
 		String flag = (String) session.getAttribute("flag");
 
 		if (servletPath != null && ("/KeyManager/login.jsp".equals(servletPath) 
-				|| servletPath.equals("/KeyManager/register.html") 
+				|| servletPath.equals("/KeyManager/register.jsp") 
+				|| "/Register".equals(servletPath) 
 				|| "/CheckLogin".equals(servletPath) 
 				|| "/Logout".equals(servletPath) 
 				|| "/SearchServlet".equals(servletPath) 

@@ -33,22 +33,5 @@ public class SearchServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type = request.getParameter("type");
-		String keyWord = request.getParameter("keyword");
-		switch (type) {
-		case "user":
-			if (keyWord != "" || keyWord != null) {
-				SearchService ss = new SearchService();
-				String reuslt = ss.searchUser(keyWord).toString();
-				PrintWriter pw = response.getWriter();
-				pw.write(reuslt);
-				pw.flush();
-				pw.close();
-			}
-			break;
-
-		default:
-			break;
-		}
 	}
 }
