@@ -45,7 +45,7 @@ public class PermissionFilter implements Filter {
 				|| "/Register".equals(servletPath) 
 				|| "/CheckLogin".equals(servletPath) 
 				|| "/Logout".equals(servletPath) 
-				|| "/SearchServlet".equals(servletPath) 
+//				|| "/Search".equals(servletPath) 
 				|| "/PhotoEditor".equals(servletPath) 
 				|| (servletPath.length()> 15 && "/KeyManager/img".equals(servletPath.substring(0, 15)))
 				|| (servletPath.length()> 15 && "/KeyManager/css".equals(servletPath.substring(0, 15)))

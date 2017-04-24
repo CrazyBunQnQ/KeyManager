@@ -1,7 +1,7 @@
 package com.crazybunqnq.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 用户信息类
@@ -14,7 +14,7 @@ public class User implements Serializable {
 	/**
 	 * 用户唯一标识
 	 */
-	private long id;
+	private Long id;
 	/**
 	 * 用户名
 	 */
@@ -65,12 +65,13 @@ public class User implements Serializable {
 	/**
 	 * 构造器
 	 */
-	public User(String name, String pwd, String nickName, String sex, Integer age, String phoneNumber,
+	public User(Long id, String name, String pwd, Integer limit, String nickName, String sex, Integer age, String phoneNumber,
 			String weChat, String qQ, Date createTime) {
 		super();
+		this.id = id <= 0? 0: id;
 		this.name = name;
 		this.pwd = pwd;
-		limit = 0;
+		this.limit = limit;
 		this.nickName = nickName;
 		this.sex = sex;
 		this.age = age;
