@@ -13,9 +13,9 @@
 		
 		<link rel="stylesheet" href="css/style.css" />
 
-		<script type="text/javascript" src="js/captcha.js"></script>
-		<script type="text/javascript" src="js/form.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/captcha.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/form.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/KeyManager/js/index.js"></script>
 		<script type="text/javascript">
 			function check() {
 				if(

@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.crazybunqnq.entity.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +9,7 @@
 <title>UserManage</title>
 </head>
 <body>
-	<% List<User> list = new List<user>() %>
+	<% List<User> list = new ArrayList<User>(); %>
 	<table>
 		<tr>
 			<td>id</td>

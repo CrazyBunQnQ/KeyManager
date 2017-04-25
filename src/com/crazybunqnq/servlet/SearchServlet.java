@@ -41,9 +41,9 @@ public class SearchServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String name = request.getParameter("name");
 		String nick = request.getParameter("isnick");
-		String statrTime = request.getParameter("start");
-		String endTime = request.getParameter("end");
-		boolean isNick = "isNick".equals(request.getParameter("isnick"))? true: false;
+		String statrTime = request.getParameter("start");//可能为""
+		String endTime = request.getParameter("end");//可能为""
+		boolean isNick = "isnick".equals(request.getParameter("isnick"))? true: false;
 		if ("manager".equals(type)) {
 			userList = cus.searchManager(name, isNick);
 		} else if ("user".equals(type)) {
@@ -52,7 +52,7 @@ public class SearchServlet extends HttpServlet {
 		//将 list 装入 request 中
 				request.setAttribute("list", userList);
 		//1. 获取一个转发器
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/KeyManager/content.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/KeyManager/manager_list.jsp");
 		//2.完成转发动作
 		dispatcher.forward(request, response);
 	}

@@ -1,14 +1,188 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>激活码管理</title>
+		<link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/main-min.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="assets/js/jquery-1.6.js"></script>
+		<script type="text/javascript" src="assets/js/bui.js"></script>
+		<script type="text/javascript" src="assets/js/common/main-min.js"></script>
+		<script type="text/javascript" src="assets/js/config-min.js"></script>
+
+		<script>
+			BUI.use('common/main', function() {
+				var config = [{
+						id: '1',
+						homePage: "11",
+						menu: [{
+								text: '我的资料',
+								items: [{
+										id: '11',
+										text: "我的激活码",
+										href: 'profile/keys.html'
+									},
+									{
+										id: '12',
+										text: '修改资料',
+										href: 'profile/info.html'
+									}
+								]
+							},
+							{
+								text: '用户管理',
+								items: [{
+										id: '21',
+										text: '用户查询',
+										href: 'users/list.html'
+									},
+									{
+										id: '22',
+										text: '激活码绑定',
+										href: 'users/addkey.html'
+									}
+								]
+							},
+							{
+								text: '激活码管理',
+								items: [{
+										id: '31',
+										text: '激活码查询',
+										href: 'keys/list.html'
+									},
+									{
+										id: '32',
+										text: '激活码生成',
+										href: 'keys/create.html'
+									}
+								]
+							},
+							{
+								text: '管理员管理',
+								items: [{
+										id: '41',
+										text: '管理员查询',
+										href: 'managers/list.html'
+									},
+									{
+										id: '42',
+										text: '添加管理员',
+										href: 'managers/add.html'
+									}
+								]
+							}
+						]
+					},
+					{
+						id: '2',
+						homePage: "12",
+						menu: [{
+								text: '物资资料',
+								items: [{
+										id: '11',
+										text: "物资查询",
+										href: 'profile/keys.html'
+									},
+									{
+										id: '12',
+										text: '物资添加',
+										href: 'profile/info.html'
+									},
+									{
+										id: '13',
+										text: '物资调度',
+										href: 'profile/info.html'
+									}
+								]
+							},
+							{
+								text: '用户管理',
+								items: [{
+										id: '21',
+										text: '用户查询',
+										href: 'users/list.html'
+									},
+									{
+										id: '22',
+										text: '用户操作',
+										href: 'users/'
+									}
+								]
+							},
+							{
+								text: '激活码管理',
+								items: [{
+										id: '31',
+										text: '激活码查询',
+										href: 'keys/list.html'
+									},
+									{
+										id: '32',
+										text: '激活码生成',
+										href: 'keys/create.html'
+									}
+								]
+							},
+							{
+								text: '管理员管理',
+								items: [{
+										id: '41',
+										text: '管理员查询',
+										href: 'managers/list.html'
+									},
+									{
+										id: '42',
+										text: '添加管理员',
+										href: 'managers/add.html'
+									}
+								]
+							}
+						]
+					}
+				];
+				new PageUtil.MainPage({
+					modulesConfig: config
+				});
+			});
+		</script>
 	</head>
-	<frameset rows="110,*" border="1" bordercolor="#111" framespacing="0">
-		<frame src="title.html" />
-		<frameset cols="120,*">
-			<frame src="category.html" />
-			<frame src="content.html" />
-		</frameset>
-	</frameset>
+
+	<body>
+		<div style="height:130px;background-color:#1B3160">
+
+			<div class="dl-title">
+				<!--<img src="/chinapost/Public/assets/img/top.png">-->
+				<img src="img/pika128.png" style="width:128px;height:128px;" /> 管理系统
+			</div>
+
+			<div class="dl-log">
+				<img src="img/avatar/yh.png" style="width:20px;height:20px;position:relative; top:-2px;" /> 欢迎您，
+				<span class="dl-log-user" style="color:red;font-size:15px">小雨哥</span>
+				<a href="login.html" title="退出系统" class="dl-log-quit">[退出]</a>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="dl-main-nav">
+				<div class="dl-inform">
+					<div class="dl-inform-title"><s class="dl-inform-icon dl-up"></s></div>
+				</div>
+				<ul id="J_Nav" class="nav-list ks-clear">
+					<li class="nav-item dl-selected">
+						<div class="nav-item-inner nav-home">主页</div>
+					</li>
+					<li class="nav-item dl-selected">
+						<div class="nav-item-inner nav-home">管理</div>
+					</li>
+				</ul>
+			</div>
+			<ul id="J_NavContent" class="dl-tab-conten">
+			</ul>
+		</div>
+
+	</body>
+
 </html>

@@ -4,56 +4,88 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.crazybunqnq.entity.User;
+import com.crazybunqnq.service.UserService;
+import com.crazybunqnq.utils.MD5Util;
+
 public class LoginServlet extends HttpServlet {
-
-	private static final long serialVersionUID = -6175648996890350478L;
-
-//	@Override
-//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String userName = req.getParameter("uname");
-//		String password = req.getParameter("upwd");
-//
-//		System.out.println("用户名 ==> " + userName);
-//		System.out.println("密码 ==> " + password);
-//	}
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("======进入doGet方法======");
-		doPost(req, resp);
+	private static final long serialVersionUID = -5524847119463925284L;
+	private UserService cus = new UserService();
+	
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("======进入doPost方法======");
-		// resp.setContentType("text/html;charset=utf-8");
-		String userName = req.getParameter("uname");
-		String password = req.getParameter("upwd");
-		System.out.println("用户名 ==> " + userName);
-		System.out.println("密码 ==> " + password);
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		System.out.println("CheckServlet 正在为你服务");
+		super.service(req, res);
+	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		this.getServletConfig().getInitParameter("charset");
+		
+		response.setContentType("text/html;charset=utf-9");
+		PrintWriter out = response.getWriter();//获取服务器的输出流
+		OutputStream os = response.getOutputStream();//输出字符流
+		*/
+		String uname = request.getParameter("uname");
+		String passwd = MD5Util.getMD5(request.getParameter("upwd"));
+		String returnUri = request.getParameter("return_uri");// 用户访问登录页面之前所访问的页面，用于使用户登录后跳转回原来的页面
+
+		System.out.println("用户名  ==》  " + uname);
+		System.out.println("密    码  ==》  " + passwd);
+		System.out.println("Return Uri ==》  " + returnUri);
+
+		RequestDispatcher rd = null;
 		String forward = null;
-		if ("crazybao".equals(userName) && "123456".equals(password)) {
-			// 请求转发
-			forward = "KeyManager/index.html";
-			RequestDispatcher rd = req.getRequestDispatcher(forward);
-			rd.forward(req, resp);
 
-			// 请求重定向
-			// resp.sendRedirect(req.getContextPath() + "/MyPages/Success.jsp");
+		if (uname == null || uname.equals("") || passwd == null || passwd.equals("")) {
+			request.setAttribute("msg", "用户名或密码为空！");
+			rd = request.getRequestDispatcher("/KeyManager/login.jsp");
 		} else {
-			// 请求转发
-			forward = "KeyManager/login.jsp";
-			RequestDispatcher rd = req.getRequestDispatcher(forward);
-			rd.forward(req, resp);
+			User user = new User();
+			user.setName(uname);
+			user.setPwd(passwd);
+			boolean bool = cus.checkPwd(user);
 
-			// 请求重定向
-			// resp.sendRedirect(req.getContextPath() + "/MyPages/Error.jsp");
+			if (bool) {
+				request.getSession().setAttribute("flag", "login_success");
+				if (returnUri != null) {
+					forward = returnUri;
+				} else {
+					forward = "/KeyManager/index.html";
+				}
+			} else {
+				request.getSession().setAttribute("flag", "login_error");
+				request.setAttribute("msg", "用户名或密码输入错误，请重新输入！");
+				forward = "/KeyManager/Error.jsp";
+			}
+
+			rd = request.getRequestDispatcher(forward);
 		}
+		rd.forward(request, response);
 	}
-
 }
