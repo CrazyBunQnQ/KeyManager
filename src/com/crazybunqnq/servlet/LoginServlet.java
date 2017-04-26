@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.crazybunqnq.entity.User;
 import com.crazybunqnq.service.UserService;
 import com.crazybunqnq.utils.MD5Util;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -5524847119463925284L;
+//	private static final Logger LOGGER = Logger.getLogger(LoginServlet.class.getName());
 	private UserService cus = new UserService();
 	
 	/**
@@ -44,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		LOGGER.info("接收到请求");
 		/*
 		this.getServletConfig().getInitParameter("charset");
 		
