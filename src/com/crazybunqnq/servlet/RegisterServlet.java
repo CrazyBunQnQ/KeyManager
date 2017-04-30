@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 		Date date = new Date();
 		Long createTime = date.getTime();
 
-		User user = new User(name, pwd, nick, sex, age, phone, weChat == null ? "" : weChat, qq == null ? "" : qq,
+		User user = new User(0l, name, pwd, 0, nick, sex, age, phone, weChat == null ? "" : weChat, qq == null ? "" : qq,
 				new java.sql.Date(createTime));
 		
 		cus.addUser(user);

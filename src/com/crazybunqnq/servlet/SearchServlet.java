@@ -1,17 +1,21 @@
 package com.crazybunqnq.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.crazybunqnq.service.SearchService;
+import com.crazybunqnq.dao.impl.UserDaoImpl;
+import com.crazybunqnq.entity.User;
+import com.crazybunqnq.service.UserService;
 
 public class SearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4279315399448002795L;
+	private UserService cus = new UserService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -33,5 +37,25 @@ public class SearchServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<User> userList = null;
+		String type = request.getParameter("type");
+		String name = request.getParameter("name");
+		String nick = request.getParameter("isnick");
+		String statrTime = request.getParameter("start");//可能为""
+		String endTime = request.getParameter("end");//可能为""
+		boolean isNick = "isnick".equals(request.getParameter("isnick"))? true: false;
+		if ("manager".equals(type)) {
+			userList = cus.searchManager(name, isNick);
+		} else if ("user".equals(type)) {
+			userList = cus.searchUser(name, isNick);
+		}
+		//将 list 装入 request 中
+				request.setAttribute("list", userList);
+		//1. 获取一个转发器
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/KeyManager/manager_list.jsp");
+		//2.完成转发动作
+		dispatcher.forward(request, response);
 	}
+	
+	
 }

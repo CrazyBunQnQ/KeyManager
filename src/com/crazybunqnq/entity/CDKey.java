@@ -1,7 +1,10 @@
 package com.crazybunqnq.entity;
 
-public class CDKey extends IdEntity {
+import java.io.Serializable;
 
+public class CDKey extends IdEntity implements Serializable {
+
+	private static final long serialVersionUID = -6314930523394564879L;
 	private String cdkey;
 	private String deviceID;
 	private int days;
