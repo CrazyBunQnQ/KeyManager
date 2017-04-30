@@ -18,6 +18,7 @@ public class UserService {
 
 	public boolean checkPwd(User user) {
 		Connection conn = null;
+		ResultSet rs = null;
 		try {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
