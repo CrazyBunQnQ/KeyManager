@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import com.crazybunqnq.entity.User;
 import com.crazybunqnq.service.UserService;
 import com.crazybunqnq.utils.MD5Util;
